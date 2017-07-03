@@ -195,19 +195,3 @@ function writeToFile( file, str ){
         console.log( "File saved." );
     } )
 }
-
-function writeToDB() {
-	sql = `
-	TRUNCATE table tmp_table;
-	COPY tmp_table (stock,date,open,high,low,close,volume,\\\"Adj Close\\\") FROM '" + str(os.getcwd()) \
-	     /downloads/"+stockName+"_fixed.csv' WITH CSV delimiter as ';';
-	INSERT INTO stocks SELECT DISTINCT ON (t.stock,t.date) * FROM tmp_table t where t.close <> 0 ORDER BY (t.stock,t.date);
-	delete from tmp_table t where t.close = 0 or t.high = 0 or t.low = 0 or t.volume = 0 ; "
-	delete from tmp_table t1
-			where exists (select 1 from tmp_table t2
-          			where t2.stock = t1.stock and t2.date = t1.date and t2.ctid > t1.ctid) ;
-	INSERT INTO stocks SELECT * FROM tmp_table t where 
-		not exists (select 1 from stocks s where s.date = t.date and s.stock = t.stock) ;
-		`;
-//		subprocess.call('export PGPASSWORD=\'postgres\';psql -U postgres -d postgres -c "' + sql + '"', shell=True)
-}
