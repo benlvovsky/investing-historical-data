@@ -12,6 +12,7 @@ var downloadList = require('./investing-download-list');
 program.version( '0.0.1' )
     .option( '-l --idlist', 'file with id list to fetch. If none the default "idlist.json" will be used' )
     .option( '-d --dbformat', 'use db format output csv like "symbol,date, open, high, low, clos, volume"' )
+    .option( '-a --noheaders', 'No headers. Useful for DB import."' )
     .option( '-i --id [id]', 'id of the commodity to fetch' )
     .option( '-s --startdate [date]', 'start date in MM/dd/yyyy format.', checkDate )
     .option( '-e --enddate [date]', 'end date in MM/dd/yyyy format.', checkDate )
@@ -22,6 +23,7 @@ program.version( '0.0.1' )
 var verbose = program.verbose;
 var format = program.dbformat;
 var idlist = program.idlist;
+var noheaders = program.noheaders;
 //console.log( "3---------- " + format, verbose);
 
 var commodity;
@@ -50,7 +52,7 @@ if( verbose ){
 
 for(var i = 0; i < dwncmdlist.length; i++){
     var o = dwncmdlist[i];
-    console.log( o.name, "(" + o.country + ") :", o.id);
+//    console.log( o.name, "(" + o.country + ") :", o.id);
     getHtml( program.startdate, program.enddate, o ).then(
     	    function( retVal ){
     	    	body = retVal.body;
@@ -150,12 +152,14 @@ function bodyToCSV( body, symbol ){
     // get the first table, which holds the interesting data
     var table = $( 'table' ).first();
 
-    // get headers
-    headers.push("Symbol");
-    table.find( 'th' ).each( function(){
-        headers.push( $( this ).text() );
-    } );
-    csv.push( headers.join( csvSeparator ) );
+    if(noheaders === undefined) {
+	    // get headers
+	    headers.push("Symbol");
+	    table.find( 'th' ).each( function(){
+	        headers.push( $( this ).text() );
+	    } );
+	    csv.push( headers.join( csvSeparator ) );
+    }
 
     // get data
     table.find( 'tr' ).each( function(){
