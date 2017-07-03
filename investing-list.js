@@ -29,7 +29,6 @@ if(program.regex){
     }
 }
 
-
 for(var i = 0; i < cm.length; i++){
     var o = cm[i];
     console.log( o.name, "(" + o.country + ") :", o.id);

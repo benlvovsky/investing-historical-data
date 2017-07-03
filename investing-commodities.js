@@ -10,6 +10,51 @@ var COMMODITIES = [
         "id"     : "68"
     },
     {
+    	"name"   : "USD/EUR",
+    	"country": "US",
+    	"id"     : "2124"
+    },
+    {
+    	"name"   : "USD/CAD",
+    	"country": "US",
+    	"id"     : "7"
+    },
+    {
+    	"name"   : "USD/CHF",
+    	"country": "US",
+    	"id"     : "4"
+    },
+    {
+    	"name"   : "USD/JPY",
+    	"country": "US",
+    	"id"     : "3"
+    },
+    {
+    	"name"   : "USD/AUD",
+    	"country": "US",
+    	"id"     : "2091"
+    },
+    {
+    	"name"   : "USD/NZD",
+    	"country": "US",
+    	"id"     : "2174"
+    },
+    {
+    	"name"   : "USD/GBP",
+    	"country": "US",
+    	"id"     : "2126"
+    },
+    {
+    	"name"   : "USD/RUB",
+    	"country": "US",
+    	"id"     : "2186"
+    },
+    {
+    	"name"   : "AUD/CNY",
+    	"country": "US",
+    	"id"     : "1486"
+    },
+    {
         "name"   : "Silver",
         "country": "US",
         "id"     : "8836"
