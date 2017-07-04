@@ -7,70 +7,61 @@ var DOWNLOADLIST = [ {
 	"id" : "14499"
 }, {
 	"name" : '^N225',
-	"id" : ""
+	"id" : "50639"
 }, {
 	"name" : '^NDX',
-	"id" : ""
+	"id" : "20"
 }, {
-	"name" : '^GDAXI',
-	"id" : ""
+	"name" : '^GDAXIP',
+	"id" : "19117"
 }, {
 	"name" : '^SSEC',
-	"id" : ""
+	"id" : "40820"
 }, {
-	"name" : '^HSI',
-	"id" : ""
+	"name" : '^HSIDV',
+	"id" : "985342"
 }, {
 	"name" : '^BSESN',
-	"id" : ""
+	"id" : "39929"
 }, {
 	"name" : '^JKSE',
-	"id" : ""
+	"id" : "29049"
 }, {
 	"name" : '^KLSE',
-	"id" : ""
+	"id" : "29078"
 }, {
-	"name" : '^NZ50',
-	"id" : ""
+	"name" : '^NZDOW',
+	"id" : "41141"
 }, {
 	"name" : '^STI',
-	"id" : ""
+	"id" : "40006"
 }, {
 	"name" : '^KS11',
-	"id" : ""
+	"id" : "37426"
 }, {
 	"name" : '^TWII',
-	"id" : ""
+	"id" : "38017"
 }, {
 	"name" : '^BVSP',
-	"id" : ""
+	"id" : "17920"
 }, {
 	"name" : '^GSPTSE',
-	"id" : ""
+	"id" : "24441"
 }, {
 	"name" : '^MXX',
-	"id" : ""
-}, {
-	"name" : '^GSPC',
-	"id" : ""
+	"id" : "27254"
 }, {
 	"name" : '^ATX',
-	"id" : ""
+	"id" : "1016254"
 }, {
 	"name" : '^BFX',
-	"id" : ""
-}, {
-	"name" : '^FCHI',
-	"id" : ""
+	"id" : "14601"
 }, {
 	"name" : '^OSEAX',
-	"id" : ""
+	"id" : "49497"
 }, {
 	"name" : '^OMXSPI',
-	"id" : ""
-}, {
-	"name" : 'FXA',
-	"id" : ""
+	"id" : "25683"
 }, {
 	"name" : "XAU/USD",
 	"country" : "US",
