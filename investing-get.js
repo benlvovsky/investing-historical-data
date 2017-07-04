@@ -3,6 +3,7 @@ var request = require( 'request' );
 var cheerio = require( 'cheerio' );
 var Promise = require( 'promise' );
 var program = require( 'commander' );
+var _ = require('lodash');
 
 //var commodities = require('./investing-commodities');
 var commodities = require('./investing-download-list');
@@ -154,17 +155,19 @@ function bodyToCSV( body, symbol ){
 
     let volColExists = false;
     let lastColIdx;
-    if(noheaders === undefined) {
-	    // get headers
-	    headers.push("Symbol");
-	    table.find( 'th' ).each( function(idx, element){
-	    	if ($( this ).text() === 'Change %') {
-	    		lastColIdx = idx - 1;
-	    	} else {
-	    		headers.push( $( this ).text() );	    		
-	    	}
-	        volColExists = volColExists || $( this ).text() === 'Vol.';
-	    } );
+
+    // get headers & calculate helper indexes
+    headers.push("Symbol");
+    table.find( 'th' ).each( function(idx, element){
+    	if ($( this ).text() === 'Change %') {
+    		lastColIdx = idx - 1;
+    	} else {
+    		headers.push( $( this ).text() );
+    	}
+        volColExists = volColExists || $( this ).text() === 'Vol.';
+    } );
+    
+    if(_.isUndefined(noheaders)) {
 	    csv.push( headers.join( csvSeparator ) );
     }
 
@@ -204,9 +207,18 @@ function parseNum(str) {
 	let mult = 1;
 	if(str.indexOf('K') > -1) mult = 1000;
 	if(str.indexOf('M') > -1) mult = 1000000;
-	str = str.replace('K', '').replace('M', '').replace(',', '');
+	if(str.indexOf('B') > -1) mult = 1000000000;
+//	if(str.indexOf('B') > -1) {
+//		console.log( "Found Billion. mult=" + mult);		
+//	}	
+
+	str = str.replace('K', '').replace('M', '').replace('B','').replace(',', '');
 	let fl = parseFloat(str) * mult;
-	return fl.toString();
+	if (isNaN(fl)) {
+		return '0';
+	} else {
+		return fl.toString();		
+	}
 }
 
 /**
