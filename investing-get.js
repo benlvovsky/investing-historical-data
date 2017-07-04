@@ -4,8 +4,8 @@ var cheerio = require( 'cheerio' );
 var Promise = require( 'promise' );
 var program = require( 'commander' );
 
-var commodities = require('./investing-commodities');
-var downloadList = require('./investing-download-list');
+//var commodities = require('./investing-commodities');
+var commodities = require('./investing-download-list');
 
 // ================= parse program arguments
 
@@ -152,11 +152,18 @@ function bodyToCSV( body, symbol ){
     // get the first table, which holds the interesting data
     var table = $( 'table' ).first();
 
+    let volColExists = false;
+    let lastColIdx;
     if(noheaders === undefined) {
 	    // get headers
 	    headers.push("Symbol");
-	    table.find( 'th' ).each( function(){
-	        headers.push( $( this ).text() );
+	    table.find( 'th' ).each( function(idx, element){
+	    	if ($( this ).text() === 'Change %') {
+	    		lastColIdx = idx - 1;
+	    	} else {
+	    		headers.push( $( this ).text() );	    		
+	    	}
+	        volColExists = volColExists || $( this ).text() === 'Vol.';
 	    } );
 	    csv.push( headers.join( csvSeparator ) );
     }
@@ -168,10 +175,19 @@ function bodyToCSV( body, symbol ){
         	line.push(symbol);
         }
         var isEmptyLine = true;
-        $( this ).children( 'td' ).each( function(){
-            line.push( $( this ).text() );
+        $( this ).children( 'td' ).each( function(idx){
+        	if(idx <= lastColIdx) {
+        		str = $( this ).text();
+        		if(idx > 0) {
+        			str = parseNum(str);
+        		}
+       			line.push(str);        			
+        	}
             isEmptyLine = isEmptyLine && $( this ).text().trim().length === 0
         } );
+        if (!volColExists) {
+        	line.push('0');
+        }
         if (!isEmptyLine) {
         	csv.push( line.join( csvSeparator ) );
         }
@@ -182,6 +198,15 @@ function bodyToCSV( body, symbol ){
 
     return csv.join( "\n" );
 
+}
+
+function parseNum(str) {
+	let mult = 1;
+	if(str.indexOf('K') > -1) mult = 1000;
+	if(str.indexOf('M') > -1) mult = 1000000;
+	str = str.replace('K', '').replace('M', '').replace(',', '');
+	let fl = parseFloat(str) * mult;
+	return fl.toString();
 }
 
 /**
