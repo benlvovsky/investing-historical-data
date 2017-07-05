@@ -6,61 +6,61 @@ var DOWNLOADLIST = [ {
 	"name" : "^AORD",
 	"id" : "14499"
 }, {
-	"name" : '^N225',
-	"id" : "50639"
+	"name" : "^N225",
+	"id" : "946058"
 }, {
-	"name" : '^NDX',
+	"name" : "^NDX",
 	"id" : "20"
 }, {
-	"name" : '^GDAXIP',
+	"name" : "^GDAXIP",
 	"id" : "19117"
 }, {
-	"name" : '^SSEC',
+	"name" : "^SSEC",
 	"id" : "40820"
 }, {
-	"name" : '^HSIDV',
+	"name" : "^HSIDV",
 	"id" : "985342"
 }, {
-	"name" : '^BSESN',
+	"name" : "^BSESN",
 	"id" : "39929"
 }, {
-	"name" : '^JKSE',
+	"name" : "^JKSE",
 	"id" : "29049"
 }, {
-	"name" : '^KLSE',
+	"name" : "^KLSE",
 	"id" : "29078"
 }, {
-	"name" : '^NZDOW',
+	"name" : "^NZDOW",
 	"id" : "41141"
 }, {
-	"name" : '^STI',
+	"name" : "^STI",
 	"id" : "40006"
 }, {
-	"name" : '^KS11',
+	"name" : "^KS11",
 	"id" : "37426"
 }, {
-	"name" : '^TWII',
+	"name" : "^TWII",
 	"id" : "38017"
 }, {
-	"name" : '^BVSP',
+	"name" : "^BVSP",
 	"id" : "17920"
 }, {
-	"name" : '^GSPTSE',
+	"name" : "^GSPTSE",
 	"id" : "24441"
 }, {
-	"name" : '^MXX',
+	"name" : "^MXX",
 	"id" : "27254"
 }, {
-	"name" : '^ATX',
+	"name" : "^ATX",
 	"id" : "1016254"
 }, {
-	"name" : '^BFX',
+	"name" : "^BFX",
 	"id" : "14601"
 }, {
-	"name" : '^OSEAX',
+	"name" : "^OSEAX",
 	"id" : "49497"
 }, {
-	"name" : '^OMXSPI',
+	"name" : "^OMXSPI",
 	"id" : "25683"
 }, {
 	"name" : "XAU/USD",
@@ -159,10 +159,6 @@ var DOWNLOADLIST = [ {
 	"country" : "UK",
 	"id" : "959208"
 }, {
-	"name" : "Copper",
-	"country" : "UK",
-	"id" : "959211"
-}, {
 	"name" : "Tin",
 	"country" : "UK",
 	"id" : "959209"
@@ -258,13 +254,13 @@ module.exports = {
 
 	commodities : DOWNLOADLIST,
 	usOnly : function() {
-		return filter('country', 'US');
+		return filter("country", "US");
 	},
 	ukOnly : function() {
-		return filter('country', 'UK');
+		return filter("country", "UK");
 	},
 	get : function(id) {
-		var o = filter('id', id);
+		var o = filter("id", id);
 		return o.length != 1 ? undefined : o[0];
 	},
 	find : find
