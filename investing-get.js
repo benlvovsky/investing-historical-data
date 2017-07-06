@@ -208,9 +208,6 @@ function parseNum(str) {
 	if(str.indexOf('K') > -1) mult = 1000;
 	if(str.indexOf('M') > -1) mult = 1000000;
 	if(str.indexOf('B') > -1) mult = 1000000000;
-//	if(str.indexOf('B') > -1) {
-//		console.log( "Found Billion. mult=" + mult);		
-//	}	
 
 	str = str.replace('K', '').replace('M', '').replace('B','').replace(',', '');
 	let fl = parseFloat(str) * mult;
