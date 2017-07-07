@@ -1,3 +1,6 @@
+// run like below:
+//	node investing-get.js -l -a -s 01/01/1970 -e 07/07/2017 -d > a.txt
+
 var fs = require( 'fs' );
 var request = require( 'request' );
 var cheerio = require( 'cheerio' );
@@ -154,7 +157,7 @@ function bodyToCSV( body, symbol ){
     var table = $( 'table' ).first();
 
     let volColExists = false;
-    let lastColIdx;
+    let lastColIdx = 0;
 
     // get headers & calculate helper indexes
     headers.push("Symbol");
@@ -181,6 +184,9 @@ function bodyToCSV( body, symbol ){
         $( this ).children( 'td' ).each( function(idx){
         	if(idx <= lastColIdx) {
         		str = $( this ).text();
+        		if (str.indexOf("No results found") > -1) {
+        			isEmptyLine = true;
+        		}
         		if(idx > 0) {
         			str = parseNum(str);
         		}
@@ -191,8 +197,16 @@ function bodyToCSV( body, symbol ){
         if (!volColExists) {
         	line.push('0');
         }
+        // ensure csv column number
         if (!isEmptyLine) {
+        	// first fix empty columns
+            for (i = line.length; i < lastColIdx; i++) {
+            	line.push('0');
+            }
+            // now push the row
         	csv.push( line.join( csvSeparator ) );
+//        	console.log( line );
+//        	process.exit()
         }
     } );
 

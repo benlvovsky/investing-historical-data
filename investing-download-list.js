@@ -16,9 +16,6 @@ var DOWNLOADLIST = 	[
 		"name" : "^SSEC",
 		"id" : "40820"
 	}, {
-		"name" : "^HSIDV",
-		"id" : "985342"
-	}, {
 		"name" : "^BSESN",
 		"id" : "39929"
 	}, {
@@ -48,9 +45,6 @@ var DOWNLOADLIST = 	[
 	}, {
 		"name" : "^MXX",
 		"id" : "27254"
-	}, {
-		"name" : "^ATX",
-		"id" : "1016254"
 	}, {
 		"name" : "^BFX",
 		"id" : "14601"
@@ -212,10 +206,6 @@ var DOWNLOADLIST = 	[
 		"name" : "Lean Hogs",
 		"country" : "US",
 		"id" : "8913"
-	}, {
-		"name" : "Feeder Cattle",
-		"country" : "US",
-		"id" : "961618"
 	}, {
 		"name" : "Lumber",
 		"country" : "US",
