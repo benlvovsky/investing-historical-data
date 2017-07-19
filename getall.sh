@@ -1,5 +1,5 @@
 #!/bin/bash
-node investing-get.js -l -a -s 01/01/2015 -e 07/07/2017 -d >  a.txt
+node investing-get.js -l -a -s 01/01/2015 -e 19/07/2017 -d >  a.txt
 node investing-get.js -l -a -s 01/01/2013 -e 01/01/2015 -d >> a.txt
 node investing-get.js -l -a -s 01/01/2011 -e 01/01/2013 -d >> a.txt
 node investing-get.js -l -a -s 01/01/2009 -e 01/01/2011 -d >> a.txt
