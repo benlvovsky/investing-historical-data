@@ -1,4 +1,71 @@
+// for id check html spurce by 'data-pair_id='
+
 var DOWNLOADLIST = 	[
+	{
+		"name" : "CBA",
+		"id" : "625"
+	}, {
+		"name" : "WBC",
+		"id" : "8706"
+	}, {
+		"name" : "BHP",
+		"id" : "617"
+	}, {
+		"name" : "ANZ",
+		"id" : "636"
+	}, {
+		"name" : "NAB",
+		"id" : "7788"
+	}, {
+		"name" : "CSL",
+		"id" : "623"
+	}, {
+		"name" : "WES",
+		"id" : "8712"
+	}, {
+		"name" : "TLS",
+		"id" : "8677"
+	}, {
+		"name" : "WOW",
+		"id" : "8720"
+	}, {
+		"name" : "MQG",
+		"id" : "624"
+	}, {
+		"name" : "RIO",
+		"id" : "8607"
+	}, {
+		"name" : "TCL",
+		"id" : "8668"
+	}, {
+		"name" : "WPL",
+		"id" : "8721"
+	}, {
+		"name" : "SCG",
+		"id" : "102935"
+	}, {
+		"name" : "SUN",
+		"id" : "8659"
+	}, {
+		"name" : "WFD",
+		"id" : "102936"
+	}, {
+		"name" : "IAG",
+		"id" : "627"
+	}, {
+		"name" : "AMP",
+		"id" : "8020"
+	}, {
+		"name" : "BXB",
+		"id" : "631"
+	}, {
+		"name" : "QBE",
+		"id" : "8592"
+	}
+]
+;
+
+var DOWNLOADLIST_GLOBAL_MARKET = 	[
 	{
 		"name" : "Gold",
 		"country" : "US",
