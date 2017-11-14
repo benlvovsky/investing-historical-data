@@ -36,7 +36,9 @@ if (!idlist && program.id) {
 	commodity = commodities.get(program.id);
 	dwncmdlist = [commodity];
 } else if (idlist && !program.id) {
+//	dwncmdlist = commodities.commodities.allInstr;
 	dwncmdlist = commodities.commodities;
+//	console.log(dwncmdlist);
 } else {
     console.error('Either one idlist or id has to be present.');
     process.exit(1);
