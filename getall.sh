@@ -21,5 +21,5 @@
 #node investing-get.js -l -a -s 01/01/1983 -e 01/01/1985 -d >> a.txt
 #node investing-get.js -l -a -s 01/01/1981 -e 01/01/1983 -d >> a.txt
 
-node investing-get.js -l -a -s 01/01/2011 -e 09/29/2017 -d >  a.txt
+node investing-get.js -l -a -s 01/01/2007 -e 05/31/2018 -d > a.txt
 grep -Ev 'No results found' a.txt > b.txt

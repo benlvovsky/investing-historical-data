@@ -9,7 +9,8 @@ var program = require( 'commander' );
 var _ = require('lodash');
 
 //var commodities = require('./investing-commodities');
-var commodities = require('./investing-download-list');
+//var commodities = require('./investing-download-list');
+var instrumentsList = require('./investing-download-list-asx200.js');
 
 // ================= parse program arguments
 
@@ -33,11 +34,14 @@ var noheaders = program.noheaders;
 var commodity;
 
 if (!idlist && program.id) {
-	commodity = commodities.get(program.id);
-	dwncmdlist = [commodity];
+//	commodity = commodities.get(program.id);
+	instrument = instrumentsList.get(program.id);
+//	dwncmdlist = [commodity];
+	dwncmdlist = [instrument];
 } else if (idlist && !program.id) {
 //	dwncmdlist = commodities.commodities.allInstr;
-	dwncmdlist = commodities.commodities;
+	dwncmdlist = instrumentsList.instruments;
+//	dwncmdlist = commodities.commodities;
 //	console.log(dwncmdlist);
 } else {
     console.error('Either one idlist or id has to be present.');
