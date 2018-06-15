@@ -10,7 +10,8 @@ var _ = require('lodash');
 
 //var commodities = require('./investing-commodities');
 //var commodities = require('./investing-download-list');
-var instrumentsList = require('./investing-download-list-asx200.js');
+//var instrumentsList = require('./investing-download-list-asx200.js');
+var instrumentsList = require('./investing-download-list-asx100.js');
 
 // ================= parse program arguments
 
